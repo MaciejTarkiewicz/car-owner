@@ -1,2 +1,2 @@
 # car-owner
-Hibernate Annotation
+Hibernate Annotation with Vaadin
