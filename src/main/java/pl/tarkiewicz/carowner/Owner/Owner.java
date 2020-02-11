@@ -2,6 +2,7 @@ package pl.tarkiewicz.carowner.Owner;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.engine.internal.Cascade;
+import org.hibernate.engine.internal.CascadePoint;
 import pl.tarkiewicz.carowner.Car.Car;
 
 @Entity
@@ -24,7 +27,7 @@ public class Owner {
     private String surname;
     private String lastname;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "car_owner",
             joinColumns = { @JoinColumn(name = "onwer_id") },
             inverseJoinColumns = { @JoinColumn(name = "car_id") })

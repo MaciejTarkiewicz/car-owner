@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,6 +25,9 @@ public class Car {
     private String brand;
     private String name;
     private LocalDate productionYear;
+
+    @Enumerated(value = EnumType.STRING)
+    private CarCategory carCategory;
 
     @ManyToMany(mappedBy = "carSet")
     private Set<Owner> ownerSet;
@@ -62,11 +67,20 @@ public class Car {
         this.productionYear = productionYear;
     }
 
-    public Set<Owner> getOwners() {
+    public Set<Owner> getOwnerSet() {
         return ownerSet;
     }
 
-    public void setOwners(Set<Owner> ownerSet) {
+    public void setOwnerSet(Set<Owner> ownerSet) {
         this.ownerSet = ownerSet;
     }
+
+    public CarCategory getCarCategory() {
+        return carCategory;
+    }
+
+    public void setCarCategory(CarCategory carCategory) {
+        this.carCategory = carCategory;
+    }
+
 }
