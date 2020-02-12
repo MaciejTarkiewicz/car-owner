@@ -16,12 +16,15 @@ public class OwnerService {
         this.ownerRepo = ownerRepo;
     }
 
-    List<OwnerDto> getOwners() {
+    public List<OwnerDto> getOwners() {
         return ownerRepo.findAll().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
+    public  List<OwnerCarCategoryDto> getCarCategoryOwners(){
+        return ownerRepo.getCarsCategory();
+    }
 
     public OwnerDto convertToDto(Owner owner) {
         return OwnerDto.builder()

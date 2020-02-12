@@ -29,7 +29,7 @@ public class Owner {
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "car_owner",
-            joinColumns = { @JoinColumn(name = "onwer_id") },
+            joinColumns = { @JoinColumn(name = "owner_id") },
             inverseJoinColumns = { @JoinColumn(name = "car_id") })
     private Set<Car> carSet;
 

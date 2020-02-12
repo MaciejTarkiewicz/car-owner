@@ -18,22 +18,22 @@ public class CarController {
     }
 
     @GetMapping(value = "/cars/all")
-    public List<CarDto> getCars(){
+    public List<CarDto> getCars() {
         return carService.getCars();
     }
 
-    @GetMapping(value = "/cars/all1")
-    public List<CarDtoWithCars> getCarsWithOwners(){
+    @GetMapping(value = "/cars/owners")
+    public List<CarDtoWithCars> getCarsWithOwners() {
         return carService.getCarsWithOwners();
     }
 
-    @GetMapping(value = "car")
-    public CarDtoWithCars getCarWithOwner(@RequestParam Long id){
-        return carService.getCarWithOwner(id);
+    @GetMapping(value = "/car")
+    public CarDto getCar(@RequestParam Long id) {
+        return carService.getCar(id);
     }
 
-    @GetMapping(value = "car1")
-    public CarDto getCar(@RequestParam Long id){
-        return carService.getCar(id);
+    @GetMapping(value = "/car/owner")
+    public CarDtoWithCars getCarWithOwner(@RequestParam Long id) {
+        return carService.getCarWithOwner(id);
     }
 }
